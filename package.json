@@ -15,7 +15,9 @@
     "db:start": "docker compose -f podman-compose.yml start",
     "db:down": "docker compose -f podman-compose.yml down",
     "db:seed": "tsx src/seed.ts",
-    "db:schema:update": "tsx src/schema-update.ts"
+    "db:schema:update": "tsx src/schema-update.ts",
+    "migration:create": "tsx src/migration-create.ts",
+    "migration:run": "tsx src/migration-run.ts"
   },
   "dependencies": {
     "@mikro-orm/core": "^6.6.13",

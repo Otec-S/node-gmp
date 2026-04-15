@@ -1,11 +1,14 @@
 import { UniqueConstraintViolationException } from '@mikro-orm/core';
 import { User } from '../entities/user.entity.js';
+import { Profile } from '../entities/profile.entity.js';
 import { DI } from '../db-connection.js';
 
-export const createUser = async (data: Omit<User, 'id'>) => {
+export const createUser = async (data: Pick<User, 'name' | 'email'>, bio: string) => {
   const em = DI.orm.em.fork();
-  const userRepository = em.getRepository(User);
-  const user = userRepository.create(data);  // id is generated automatically by the entity default
+
+  const profile = em.create(Profile, { bio });
+  const user = em.create(User, { ...data, profile });
+
   try {
     await em.persistAndFlush(user);
   } catch (error) {

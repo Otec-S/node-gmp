@@ -1,5 +1,7 @@
 import { randomUUID } from 'node:crypto';
-import { Entity, Opt, PrimaryKey, Property } from '@mikro-orm/core';
+import { Collection, Entity, OneToMany, OneToOne, Opt, PrimaryKey, Property } from '@mikro-orm/core';
+import { Profile } from './profile.entity.js';
+import { Post } from './post.entity.js';
 
 @Entity({ tableName: 'users' })
 export class User {
@@ -17,4 +19,10 @@ export class User {
 
   @Property({ type: 'string', default: 'user' })
   role: string & Opt = 'user';
+
+  @OneToOne(() => Profile, profile => profile.user, { owner: true, nullable: true })
+  profile?: Profile;
+
+  @OneToMany(() => Post, post => post.author)
+  posts = new Collection<Post>(this);
 }
