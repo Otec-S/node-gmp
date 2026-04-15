@@ -13,7 +13,9 @@
     "db:up": "docker compose -f podman-compose.yml up -d",
     "db:stop": "docker compose -f podman-compose.yml stop",
     "db:start": "docker compose -f podman-compose.yml start",
-    "db:down": "docker compose -f podman-compose.yml down"
+    "db:down": "docker compose -f podman-compose.yml down",
+    "db:seed": "tsx src/seed.ts",
+    "db:schema:update": "tsx src/schema-update.ts"
   },
   "dependencies": {
     "@mikro-orm/core": "^6.6.13",

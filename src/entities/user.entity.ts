@@ -6,15 +6,15 @@ export class User {
   @PrimaryKey({ type: 'uuid' })
   id: string = randomUUID();
 
-  @Property()
+  @Property({ type: 'string' })
   name!: string;
 
-  @Property({ unique: true })
+  @Property({ type: 'string', unique: true })
   email!: string;
 
-  @Property({ nullable: true })
+  @Property({ type: 'number', nullable: true })
   age?: number;
 
-  @Property({ default: 'user' })
+  @Property({ type: 'string', default: 'user' })
   role: string & Opt = 'user';
 }

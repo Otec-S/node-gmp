@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+import 'dotenv/config';
 import { connect, disconnect, DI } from './db-connection.js';
 import { User } from './entities/user.entity.js';
 
