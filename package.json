@@ -1,0 +1,35 @@
+{
+  "name": "node-gmp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "build": "tsc",
+    "start:prod": "node dist/index.js",
+    "db:up": "docker compose -f podman-compose.yml up -d",
+    "db:stop": "docker compose -f podman-compose.yml stop",
+    "db:start": "docker compose -f podman-compose.yml start",
+    "db:down": "docker compose -f podman-compose.yml down"
+  },
+  "dependencies": {
+    "@mikro-orm/core": "^6.6.13",
+    "@mikro-orm/migrations": "^6.6.13",
+    "@mikro-orm/postgresql": "^6.6.13",
+    "dotenv": "^16.4.7",
+    "express": "^5.2.1",
+    "pg": "^8.14.1",
+    "reflect-metadata": "^0.2.2"
+  },
+  "devDependencies": {
+    "@mikro-orm/cli": "^6.6.13",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.6.0",
+    "@types/pg": "^8.20.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  }
+}
